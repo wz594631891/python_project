@@ -16,7 +16,8 @@ demo = r.text  # 服务器返回响应
 
 from simplified_scrapy.simplified_doc import SimplifiedDoc
 doc = SimplifiedDoc(demo)
-str=doc.getElementsByTag("td")[-1].getChild().text #抓取元素
+#str=doc.getElementsByTag("td")[-1].getChild().text #抓取元素 最后一个
+str=doc.getElementsByTag("p")[0].text #抓取元素 第一个
 
 ## 读取文件
 f = open("data.txt","r")   #设置文件对象
