@@ -19,15 +19,15 @@ doc = SimplifiedDoc(demo)
 #str=doc.getElementsByTag("td")[-1].getChild().text #抓取元素 最后一个
 s=doc.getElementByClass("ui-font-middle ui-color-red ui-num")
 s=s.getText()
-
+#百分数转小数
 num = float(s.strip('%')) # 去掉s 字符串中的 %
 rate = num/100.0
 rate=rate*12
 if rate>0.15:
-     percentage=str(rate*100) + '%'
-     print("大于15%",percentage)
+     percentage=str(rate*100) + '%' #小数转百分数
+     print("华安纳斯达克100大于15%",percentage)
 else:
      percentage = str(rate * 100) + '%'
-     print("小于15%",percentage)
+     print("华安纳斯达克100小于15%",percentage)
 
 

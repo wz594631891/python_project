@@ -5,6 +5,7 @@
 #else
 
 #fi
+py -3 huaan_nasdaq.py
 while((1));do
 	py -3 adobe_stock.py&&py -3 microsoft_stock.py&&py -3 nasdaq_stock.py
 	sleep 3600
