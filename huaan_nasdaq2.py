@@ -30,6 +30,7 @@ num4 = float(s4.strip('%')) # 去掉s 字符串中的 %
 num5 = float(s5.strip('%')) # 去掉s 字符串中的 %
 #rate = num/100.0 + num2/100.0 +num3/100.0+ num4/100.0+num5/100.0
 list=[num,num2,num3,num4,num5]
+#while循环
 i=0
 sum=0
 while i<=len(list)-1:
@@ -37,9 +38,37 @@ while i<=len(list)-1:
      if sum < 0.05:
           percentage = str(sum ) + '%'  # 小数转百分数
           print("华安纳斯达克100跌幅大于5%", percentage)
+          ## 发送邮件
+          import smtplib
+          from email.mime.text import MIMEText
+          from email.header import Header
+
+          # 第三方 SMTP 服务
+          mail_host = "smtp.qq.com"  # 设置服务器
+          mail_user = "2460307574"  # 用户名
+          mail_pass = "mbygawjmypcydhii"  # 口令
+
+          sender = '2460307574@qq.com'
+          receivers = ['2460307574@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
+
+          message = MIMEText('华南纳斯达克跌幅超5%', 'plain', 'utf-8')  # 正文
+          message['From'] = Header("叶志豪", 'utf-8')  # 发信人
+          message['To'] = Header("叶志豪", 'utf-8')  # 收信人
+
+          subject = "华安纳斯达克跌幅为"+percentage
+          message['Subject'] = Header(subject, 'utf-8')
+
+          try:
+               smtpObj = smtplib.SMTP()
+               smtpObj.connect(mail_host, 587)  # 25 为 SMTP 端口号
+               smtpObj.login(mail_user, mail_pass)
+               smtpObj.sendmail(sender, receivers, message.as_string())
+               print("邮件发送成功")
+          except smtplib.SMTPException:
+               print("Error: 无法发送邮件")
      else:
           percentage = str(sum) + '%'
-          print("华安纳斯达克100跌幅小于5", percentage)
+          print("华安纳斯达克100跌幅小于5")
      i+=1
 
 

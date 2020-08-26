@@ -20,7 +20,7 @@ doc = SimplifiedDoc(demo)
 str=doc.getElementsByTag("p")[0].text #抓取元素 第一个
 
 ## 读取文件
-f = open("data.txt","r")   #设置文件对象
+f = open("E:\python_project\data.txt","r")   #设置文件对象
 data = f.read()     #将txt文件的所有内容读入到字符串str中
 f.close()   #将文件关闭
 if data!=str:
@@ -56,7 +56,7 @@ if data!=str:
         print ("Error: 无法发送邮件")
     ## 写入文件
 
-    with open('data.txt','w') as f:    #设置文件对象
+    with open('E:\python_project\data.txt','w') as f:    #设置文件对象
          f.write(str)                 #将字符串写入文件中
 
 else:
