@@ -1,0 +1,15 @@
+#!/bin/bash
+#启动股票脚本
+#weekday=date +%a
+#if(("$weekday" != "周日" && "$weekday" != "周六" ))
+#else
+
+#fi
+
+while((1));do
+	py -3 /E/python_project/covid_us.py # 美国疫情现有确诊监控
+	py -3 /E/python_project/huaan_nasdaq.py # 月涨幅年化率
+	py -3 /E/python_project/huaan_nasdaq2.py # 华安跌幅是否超5%
+	py -3 /E/python_project/adobe_stock.py&&py -3 /E/python_project/microsoft_stock.py&&py -3 /E/python_project/nasdaq_stock.py
+	sleep 3600
+done

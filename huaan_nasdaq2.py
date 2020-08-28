@@ -35,7 +35,7 @@ i=0
 sum=0
 while i<=len(list)-1:
      sum+=list[i] #遍历过去五天内涨跌幅
-     if sum < 0.05:
+     if sum < -5: #0.05 ->-5
           percentage = str(sum ) + '%'  # 小数转百分数
           print("华安纳斯达克100跌幅大于5%", percentage)
           ## 发送邮件
