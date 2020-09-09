@@ -38,6 +38,8 @@ while i<=len(list)-1:
      if sum < -5: #0.05 ->-5
           percentage = str(sum ) + '%'  # 小数转百分数
           print("华安纳斯达克100跌幅大于5%", percentage)
+          ## 自动卖出
+
           ## 发送邮件
           import smtplib
           from email.mime.text import MIMEText
