@@ -2,14 +2,14 @@
 # coding:utf-8
 """
 @author 叶志豪2020
-@date 2020/08/23
-判断华安纳斯达克100基金年五天内跌幅是否超过5%
+@date 2020/09/09
+判断恐惧指数涨幅年五天内涨幅是否超过5%
 """
 from bs4 import BeautifulSoup
 import requests
 
 
-url = 'https://m.cn.investing.com/indices/nq-100-historical-data'
+url = 'https://m.cn.investing.com/indices/volatility-s-p-500-historical-data'
 headers={'User-Agent':'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.110 Safari/537.36'} #反反爬虫
 r = requests.get(url,headers=headers) #反反爬虫
 demo = r.text  # 服务器返回响应
@@ -35,9 +35,9 @@ i=0
 sum=0
 while i<=len(list)-1:
      sum+=list[i] #遍历过去五天内涨跌幅
-     if sum < -5: #0.05 ->-5
+     if sum >5: #0.05 ->-5
           percentage = str(sum ) + '%'  # 小数转百分数
-          print("华安纳斯达克",(i+1),"日100跌幅大于5%", percentage)
+          print("恐惧指数",(i+1),"日100涨幅大于5%", percentage)
           ## 自动卖出
 
           ## 发送邮件
@@ -52,12 +52,12 @@ while i<=len(list)-1:
 
           sender = '2460307574@qq.com'
           receivers = ['2460307574@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-          msg = "华安纳斯达克跌幅为" + percentage
+          msg = "恐惧指数" + str(i + 1) + "日涨幅为" + percentage
           message = MIMEText(msg, 'plain', 'utf-8')  # 正文
           message['From'] = Header("叶志豪", 'utf-8')  # 发信人
           message['To'] = Header("叶志豪", 'utf-8')  # 收信人
 
-          subject ='华南纳斯达克跌幅超5%'
+          subject ='恐惧指数涨幅超5%'
           message['Subject'] = Header(subject, 'utf-8')
 
           try:
@@ -71,7 +71,7 @@ while i<=len(list)-1:
           break
      else:
           percentage = str(sum) + '%'
-          print("华安纳斯达克100跌幅小于5")
+          print("恐惧指数涨幅小于5")
      i+=1
 
 
