@@ -32,7 +32,7 @@ f = open("E:\\username.txt","r")   #设置文件对象
 username= f.read()     #将txt文件的所有内容读入到字符串str中
 f.close()   #将文件关闭
 f = open("E:\\password.txt","r")   #设置文件对象
-password= f.read()     #将txt文件的所有内容读入到字符串str中
+password= f.read()     #将txt文件的所有内容,"当前为",vix.getText()读入到字符串str中
 f.close()   #将文件关闭
 
 driver.find_element_by_css_selector("#tbname").send_keys(username)

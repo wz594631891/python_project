@@ -22,6 +22,7 @@ s2=doc.getElementsByTag("tr")[2].getChildren()[-1].html#抓取元素 第2个
 s3=doc.getElementsByTag("tr")[3].getChildren()[-1].html#抓取元素 第3个
 s4=doc.getElementsByTag("tr")[4].getChildren()[-1].html#抓取元素 第4个
 s5=doc.getElementsByTag("tr")[5].getChildren()[-1].html#抓取元素 第5个
+vix=doc.getElementByClass("lastInst pid-44336-last") #抓取vix指数
 #百分数转小数
 num = float(s.strip('%')) # 去掉s 字符串中的 %
 num2 = float(s2.strip('%')) # 去掉s 字符串中的 %
@@ -37,7 +38,7 @@ while i<=len(list)-1:
      sum+=list[i] #遍历过去五天内涨跌幅
      if sum >5: #0.05 ->-5
           percentage = str(sum ) + '%'  # 小数转百分数
-          print("恐惧指数",(i+1),"日100涨幅大于5%", percentage)
+          print("恐惧指数",(i+1),"日100涨幅大于5%", percentage,"当前为",vix.getText())
           ## 自动卖出
 
           ## 发送邮件
@@ -52,7 +53,7 @@ while i<=len(list)-1:
 
           sender = '2460307574@qq.com'
           receivers = ['2460307574@qq.com']  # 接收邮件，可设置为你的QQ邮箱或者其他邮箱
-          msg = "恐惧指数" + str(i + 1) + "日涨幅为" + percentage
+          msg = "恐惧指数" + str(i + 1) + "日涨幅为" + percentage+"当前为"+vix.getText()
           message = MIMEText(msg, 'plain', 'utf-8')  # 正文
           message['From'] = Header("叶志豪", 'utf-8')  # 发信人
           message['To'] = Header("叶志豪", 'utf-8')  # 收信人
